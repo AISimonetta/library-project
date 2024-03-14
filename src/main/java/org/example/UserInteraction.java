@@ -10,12 +10,21 @@ public class UserInteraction {
     public boolean greeting() {
         System.out.println("--------------------------------------------------------------------------------");
         System.out.println("* Welcome to the Library! If you are an administrator, please press 0; otherwise, press 1");
-        return scanner.nextInt() == 0;
+        int userType = scanner.nextInt();
+        boolean isAdmin = (userType == 0);
+        return isAdmin;
     }
 
-    public int getUserChoice() {
+
+    public int getUserChoiceForUser() {
         System.out.println("--------------------------------------------------------------------------------");
         System.out.println("* Please choose one of the following options: 1=Show all books, 2=Loan a book, 3=Exit ");
+        return scanner.nextInt();
+    }
+
+    public int getUserChoiceForAdmin() {
+        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("* Please choose one of the following options: 1=Show all books, 2=Show loaned books,3=Run report, 4=Exit ");
         return scanner.nextInt();
     }
 
@@ -67,10 +76,19 @@ public class UserInteraction {
 
         if (selectedBook != null) {
             user.loanBook(selectedBook);
+            selectedBook.setAvailable(false);
+            selectedBook.increaseLoanCount();
             System.out.println("Book \"" + selectedBook.getTitle() + "\" has been loaned to " + user.getUsername());
         } else {
             System.out.println("--------------------------------------------------------------------------------");
             System.out.println("Book not found or already loaned.");
         }
+    }
+
+
+    public boolean startAgain() {
+        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("* Would you like to start again? (0 for No, 1 for Yes): ");
+        return scanner.nextInt() == 1;
     }
 }

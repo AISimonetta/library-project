@@ -9,6 +9,8 @@ public class Book {
     private String publisher;
     private boolean isAvailable;
     private int bookCounter;
+    private int loanCount;
+
 
     public Book(int bookNumber, String title, String author, String genre, String subGenre, String publisher, boolean isAvailable, int bookCounter) {
         this.bookNumber = bookNumber;
@@ -19,6 +21,7 @@ public class Book {
         this.publisher = publisher;
         this.isAvailable = isAvailable;
         this.bookCounter = bookCounter;
+        this.loanCount = 0;
     }
 
     public int getBookNumber() {
@@ -86,6 +89,9 @@ public class Book {
     }
 
     public void increaseLoanCount() {
-        this.bookCounter ++;
+        this.loanCount++;
+    }
+    public int getLoanCount() {
+        return loanCount;
     }
 }

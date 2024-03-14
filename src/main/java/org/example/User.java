@@ -7,7 +7,7 @@ public class User {
     private String username;
     private List<Book> borrowedBooks;
 
-    public User(boolean isAdministrator, boolean isNotAdministrator, String username, List<Book> borrowedBooks) {
+    public User(boolean isAdministrator, String username, List<Book> borrowedBooks) {
         this.isAdministrator = isAdministrator;
         this.username = username;
         this.borrowedBooks = borrowedBooks;
