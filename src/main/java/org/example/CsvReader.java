@@ -10,14 +10,38 @@ public class CsvReader {
     public static List<Book> readBooksFromCsv(String filePath) {
         List<Book> books = new ArrayList<>();
 
+        try {
+            Scanner scanner = new Scanner(new File(filePath));
 
-//    //parsing a CSV file into Scanner class constructor
-//    Scanner sc = new Scanner(new File("F:\\CSVDemo.csv"));
-//sc.useDelimiter(",");   //sets the delimiter pattern
-//while (sc.hasNext())  //returns a boolean value
-//    {
-//        System.out.print(sc.next());  //find and returns the next complete token from this scanner
-//    }
-//sc.close();  //closes the scanner
-//}
-//}
+            if (scanner.hasNextLine()) {
+                scanner.nextLine();
+            }
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] data = line.split(",");
+                Book book = createBookFromCsv(data);
+                books.add(book);
+            }
+
+            scanner.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return books;
+    }
+
+    private static Book createBookFromCsv(String[] data) {
+        int bookNumber = Integer.parseInt(data[0]);
+        String title = data[1];
+        String author = data[2];
+        String genre = data[3];
+        String subGenre = data[4];
+        String publisher = data[5];
+        boolean isAvailable = true;
+        int bookCounter = 0;
+
+        return new Book(bookNumber, title, author, genre, subGenre, publisher, isAvailable, bookCounter);
+    }
+}

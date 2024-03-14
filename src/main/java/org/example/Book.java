@@ -1,22 +1,14 @@
 package org.example;
 
 public class Book {
-
-    //Variables
-
     private int bookNumber;
     private String title;
     private String author;
     private String genre;
     private String subGenre;
     private String publisher;
-
     private boolean isAvailable;
-
     private int bookCounter;
-
-
-    //Constructor
 
     public Book(int bookNumber, String title, String author, String genre, String subGenre, String publisher, boolean isAvailable, int bookCounter) {
         this.bookNumber = bookNumber;
@@ -28,9 +20,6 @@ public class Book {
         this.isAvailable = isAvailable;
         this.bookCounter = bookCounter;
     }
-
-
-    //Getters and setters
 
     public int getBookNumber() {
         return bookNumber;
@@ -96,8 +85,7 @@ public class Book {
         this.bookCounter = bookCounter;
     }
 
-    //Methods
-
     public void increaseLoanCount() {
+        this.bookCounter ++;
     }
 }
